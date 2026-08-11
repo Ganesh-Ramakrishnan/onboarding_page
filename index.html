@@ -3,147 +3,146 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Onboarding — same content, 5 designs</title>
+<title>Registration step — Scanmarker desktop app</title>
 <style>
-  @font-face{font-family:"SFCompactDisplay";src:url("../web-scanmarker-client/src/assets/fonts/sf-compact-display-medium-5864711817c30.otf");font-weight:400 800;font-display:swap;}
   :root{
-    --ink:#141518; --title:#111318; --text:#33363B; --muted:#7E838B; --muted-2:#AEB2B9;
-    --line:#DFE1E5; --hair:#E9EAED; --hair-2:#F6F7F8;
-    --orange:#F26522; --orange-2:#FF8A3D; --orange-deep:#E24E12; --orange-soft:#FFF2EA; --peach:#FFF0E7; --peach-2:#FBDDCB;
-    --sans:"SFCompactDisplay","Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+    --ink:#14161A; --text:#3A3E45; --muted:#7A808A; --line:#E3E5E9;
+    --orange:#F26522; --orange-2:#FF8A3D; --orange-deep:#E24E12; --orange-soft:#FFF0E7;
+    --sans:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:#F1F2F4;color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
-  .wrap{max-width:1090px;margin:0 auto;padding:34px 20px 96px}
-  .page-head h1{font-size:clamp(19px,2.3vw,24px);letter-spacing:-.01em;margin:0;color:var(--ink);font-weight:700}
-  .page-head p{margin:8px 0 0;color:var(--muted);max-width:80ch}
+  body{margin:0;background:#E9EBEF;color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.5;}
+  .wrap{max-width:1120px;margin:0 auto;padding:38px 22px 90px}
+  .page-head h1{font-size:clamp(20px,2.8vw,27px);letter-spacing:-.02em;margin:0;color:var(--ink)}
+  .page-head p{margin:8px 0 0;color:var(--muted);max-width:74ch}
+  .note{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:18px 0 0;font-size:13px;color:var(--text)}
+  .note b{color:var(--ink)}
   .opt-label{display:flex;align-items:baseline;gap:11px;margin:40px 0 12px;flex-wrap:wrap}
-  .opt-label .n{font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-deep);border:1px solid var(--orange-soft);background:var(--orange-soft);border-radius:999px;padding:5px 10px}
+  .opt-label .n{font:700 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--orange-deep);border:1px solid var(--orange-soft);background:var(--orange-soft);border-radius:999px;padding:5px 10px}
   .opt-label h2{font-size:15px;margin:0;color:var(--ink)} .opt-label span{color:var(--muted);font-size:13px}
-  .opt-label .rec{margin-left:6px;font-size:11px;font-weight:700;color:#0f7a4d;background:#e5f6ee;border:1px solid #bfe8d3;border-radius:999px;padding:4px 9px}
 
-  .backdrop{background:linear-gradient(180deg,#B4B8BE,#A3A7AD);border-radius:16px;padding:26px}
-  .modal{max-width:1000px;margin:0 auto;background:#fff;border-radius:26px;box-shadow:0 40px 90px -34px rgba(16,18,26,.55);position:relative;display:flex;flex-direction:column;padding:24px 46px 0}
-  .m-back{position:absolute;left:24px;top:22px;width:34px;height:34px;display:grid;place-items:center;color:#111;cursor:pointer;border-radius:8px}.m-back:hover{background:var(--hair-2)}.m-back svg{width:24px;height:24px}
+  /* modal (matches the survey screen) */
+  .stage{background:linear-gradient(180deg,#F3F4F7,#E7E9EE);border-radius:16px;padding:26px;border:1px solid var(--line)}
+  .modal{background:#fff;border-radius:22px;box-shadow:0 30px 70px -34px rgba(16,18,26,.5);position:relative;min-height:470px;display:flex;flex-direction:column;padding:26px 40px 0;max-width:960px;margin:0 auto}
+  .m-back{position:absolute;left:20px;top:20px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--ink);cursor:pointer}
+  .m-back:hover{background:#F1F2F5} .m-back svg{width:20px;height:20px}
   .m-body{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:16px}
-  .title{font-size:clamp(23px,2.9vw,30px);font-weight:700;letter-spacing:-.01em;color:var(--title);margin:4px 0 11px;max-width:24ch;line-height:1.18}.title .o{color:var(--orange)}
-  .sub{font-size:clamp(14.5px,1.6vw,17px);color:#3A3D42;margin:0 auto 22px;max-width:58ch;line-height:1.45}
-  .dlabel{font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-2);margin:6px 0 16px}
-  .wlabel{font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-2);margin:22px 0 10px}
-  .conn{display:inline-flex;gap:6px;margin-top:6px}.conn .c{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:7px;padding:3px 8px;font-size:11px;font-weight:600;color:var(--ink)}.conn .c svg{width:13px;height:13px;color:var(--orange-deep)}
-  .note{display:flex;gap:9px;align-items:flex-start;background:var(--orange-soft);border:1px solid var(--peach-2);border-radius:12px;padding:11px 15px;margin-top:22px;max-width:600px;font-size:12.5px;color:#8A5B44;text-align:left}.note svg{width:16px;height:16px;color:var(--orange-deep);flex:0 0 auto;margin-top:1px}.note b{color:var(--orange-deep);font-weight:700}
+  .m-title{font-size:clamp(22px,2.6vw,28px);font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:6px 0 14px;max-width:24ch;line-height:1.18}
+  .m-sub{font-size:clamp(15px,1.6vw,18px);color:#4A4E55;margin:0 auto 28px;max-width:58ch;line-height:1.45}
+  .helper{color:#4A4E55;font-size:14px;margin-top:24px} .m-link{display:inline-block;margin-top:8px;color:var(--orange-deep);font-weight:600;text-decoration:underline;cursor:pointer}
 
-  /* works with (compact grid) */
-  .wt{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:492px;width:100%;margin:0 auto}
-  @media(max-width:560px){.wt{grid-template-columns:repeat(4,1fr)}}
-  .wt.c3{grid-template-columns:repeat(3,1fr);max-width:none}
-  .lg{width:100%;height:48px;border-radius:11px;background:#fff;border:1px solid var(--line);box-shadow:0 3px 9px -5px rgba(16,18,26,.28);display:grid;place-items:center;position:relative;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
-  .lg:hover{transform:translateY(-2px);box-shadow:0 10px 20px -9px rgba(16,18,26,.42);border-color:var(--peach-2)}
-  .lg img{max-width:27px;max-height:27px;object-fit:contain}.lg svg{width:28px;height:28px}
-  .lg[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%);background:#1B1B1F;color:#fff;font-size:10.5px;font-weight:600;padding:4px 8px;border-radius:6px;white-space:nowrap;z-index:20}
-  .anyapp{font-size:12px;color:var(--muted-2);margin-top:10px}
-  .wpanel{background:var(--hair-2);border:1px solid var(--hair);border-radius:16px;padding:16px}
-  /* borderless single-row works-with */
-  .wrow{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:620px;width:100%;margin:0 auto}
-  .wrow .lg{border:0;box-shadow:none;background:transparent;width:auto;height:auto;transition:transform .15s ease}
-  .wrow .lg:hover{transform:translateY(-2px)}
-  .wrow .lg img{width:30px;height:30px;object-fit:contain}.wrow .lg svg{width:30px;height:30px}
+  .tiles{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+  .tile{border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;min-width:150px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;color:var(--ink);cursor:pointer;font-size:15px;background:#fff;transition:border-color .15s,box-shadow .15s,transform .1s}
+  .tile:hover{border-color:#CFD3DA;transform:translateY(-1px)}
+  .tile.sel{border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,101,34,.14)}
+  .tile .ic{width:30px;height:30px;flex:0 0 auto;display:grid;place-items:center}
+  .tile .ic svg{width:26px;height:26px}
 
-  /* step icon base */
-  .sib{width:42px;height:42px;border-radius:12px;background:var(--orange-soft);color:var(--orange-deep);display:grid;place-items:center;flex:0 0 auto;position:relative}
-  .sib svg{width:21px;height:21px}
-  .sib .nx{position:absolute;top:-6px;left:-6px;width:20px;height:20px;border-radius:50%;background:var(--orange);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;border:2px solid #fff}
-  .sh{font-weight:700;font-size:14px;color:var(--ink);margin:2px 0 2px}.st{font-size:12.5px;color:var(--muted);line-height:1.5}.st b{color:var(--ink);font-weight:700}
+  /* feature cards (V2) */
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:760px}
+  @media(max-width:720px){.feats{grid-template-columns:1fr}}
+  .feat{border:1px solid var(--line);border-radius:16px;padding:20px 18px;text-align:center}
+  .feat .fi{width:46px;height:46px;border-radius:13px;background:var(--orange-soft);color:var(--orange-deep);display:grid;place-items:center;margin:0 auto 12px} .feat .fi svg{width:24px;height:24px}
+  .feat .fh{font-weight:800;font-size:14.5px;color:var(--ink);margin-bottom:4px} .feat .ft{font-size:12.5px;color:var(--muted)}
+  .dlrow{display:flex;gap:11px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+  .dlbtn{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:11px 18px;font-weight:700;font-size:14px;color:var(--ink);cursor:pointer}
+  .dlbtn:hover{border-color:var(--orange)} .dlbtn svg{width:18px;height:18px}
 
-  /* A: 2-col grid */
-  .g2{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;max-width:680px;width:100%;text-align:left}
-  @media(max-width:620px){.g2{grid-template-columns:1fr;gap:14px}}
-  .g2 .s{display:flex;gap:13px;align-items:flex-start}
-  /* B: timeline */
-  .tl{max-width:540px;width:100%;margin:0 auto;text-align:left}
-  .tl .s{display:grid;grid-template-columns:42px 1fr;gap:15px;position:relative;padding-bottom:18px}
-  .tl .s:last-child{padding-bottom:0}
-  .tl .s:not(:last-child)::after{content:"";position:absolute;left:20px;top:48px;bottom:0;width:2px;background:var(--hair)}
-  /* C: split */
-  .csplit{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;max-width:780px;width:100%;text-align:left;align-items:start}
-  @media(max-width:760px){.csplit{grid-template-columns:1fr;gap:24px}}
-  .csplit .col .s{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
-  /* D: cards */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:720px;width:100%;text-align:left}
-  @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.cards{grid-template-columns:1fr}}
-  .cards .s{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}
-  .cards .sib{margin-bottom:11px}
-  /* E: accent rail */
-  .rail{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;max-width:700px;width:100%;text-align:left}
-  @media(max-width:620px){.rail{grid-template-columns:1fr}}
-  .rail .s{position:relative;padding:2px 0 2px 46px}
-  .rail .sib{position:absolute;left:0;top:0}
-  /* F: icon-top grid (3x2) */
-  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 16px;max-width:680px;width:100%;text-align:center}
-  @media(max-width:640px){.g3{grid-template-columns:1fr;gap:18px}}
-  .g3 .s{display:flex;flex-direction:column;align-items:center}
-  .g3 .sib{margin-bottom:11px}.g3 .conn{justify-content:center}
+  /* steps (V3) */
+  .osteps{display:flex;flex-direction:column;gap:16px;width:100%;max-width:560px;text-align:left}
+  .ostep{display:flex;gap:14px;align-items:flex-start}
+  .onum{width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center;flex:0 0 auto}
+  .oh{font-weight:800;font-size:15px;color:var(--ink);margin:3px 0 2px} .ot{font-size:13.5px;color:var(--muted)} .ot strong{color:var(--ink)}
 
-  .m-foot{margin-top:26px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:20px 0 28px;border-top:1px solid var(--hair)}
-  .step .st2{font-size:13.5px;font-weight:700;color:#111}.step .bar{width:150px;height:7px;background:#E6E6E6;border-radius:99px;overflow:hidden;margin-top:8px}.step .bar i{display:block;height:100%;width:66%;background:var(--orange);border-radius:99px}
-  .cont{background:linear-gradient(135deg,var(--orange-2),var(--orange-deep));color:#fff;border:0;border-radius:12px;padding:13px 38px;font-weight:700;font-size:15.5px;cursor:pointer;font-family:inherit;box-shadow:0 12px 24px -12px rgba(226,78,18,.65)}.cont:hover{filter:brightness(1.05)}
-  @media(max-width:640px){.backdrop{padding:12px}.modal{padding:22px 18px 0;border-radius:20px}.m-back{left:12px;top:12px}.m-body{padding-top:24px}.m-foot{flex-direction:column;align-items:stretch;gap:14px;padding:18px 0 22px}.step{order:2}.cont{order:1;width:100%}.step .bar{width:100%}}
+  /* footer */
+  .m-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:24px 0 28px}
+  .step .st{font-size:13px;font-weight:800;color:var(--ink)} .step .bar{width:150px;height:6px;background:#E5E6EA;border-radius:99px;overflow:hidden;margin-top:7px} .step .bar i{display:block;height:100%;background:var(--orange);border-radius:99px}
+  .continue{background:var(--orange);color:#fff;border:0;border-radius:11px;padding:13px 34px;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 12px 24px -12px rgba(226,78,18,.6)}
+  .continue:hover{filter:brightness(1.04)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="page-head">
-    <h1>Onboarding · same content — 5 designs</h1>
-    <p>The exact content you approved (6‑step how‑to, note, Works with), presented five ways. Modal base, real font, responsive.</p>
+    <h1>Registration flow — next step: the Scanmarker desktop app</h1>
+    <p>Three ways to present the desktop software (<b>ScanToExternal</b>) as step 2 of your onboarding survey, in the same modal style as your "Where did you purchase" screen.</p>
+    <div class="note"><b>From the support article:</b> ScanToExternal lets users scan printed text straight into Word, Excel, PowerPoint and any app on <b>Windows & macOS</b>. Translation, dictionary and read‑aloud live in the Web App (Chrome/Edge). These designs reflect that.</div>
   </div>
-  <div id="root"></div>
+
+  <!-- ===== Option A — OS selection ===== -->
+  <div class="opt-label"><span class="n">Option A</span><h2>Choose your device</h2><span>· survey-style, gathers OS (like your purchase step)</span></div>
+  <div class="stage">
+    <div class="modal">
+      <div class="m-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="m-body">
+        <h2 class="m-title">Set up the Scanmarker desktop app</h2>
+        <p class="m-sub">ScanToExternal lets you scan straight into Word, Excel and any app on your computer. Which device will you use it on?</p>
+        <div class="tiles">
+          <div class="tile sel">Windows <span class="ic"><svg viewBox="0 0 24 24" fill="#00A4EF"><path d="M3 5.5 11 4.3V11H3zM12 4.15 21 3v8h-9zM3 12h8v6.7L3 17.5zM12 12h9v9l-9-1.15z"/></svg></span></div>
+          <div class="tile">macOS <span class="ic"><svg viewBox="0 0 24 24" fill="#111"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.5 2 1 0 1.3-.6 2.5-.6s1.5.6 2.6.6 1.7-1 2.4-2c.5-.7.7-1.2 1-2-.02-.02-2.4-.9-2.4-3.6zM14.6 6.3c.6-.7 1-1.6.9-2.6-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.5 1 .1 1.9-.5 2.5-1.2z"/></svg></span></div>
+          <div class="tile">Both <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M1 17h16"/><rect x="17" y="8" width="6" height="11" rx="1.5"/></svg></span></div>
+          <div class="tile">I'll do it later <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div>
+        </div>
+        <p class="helper">You can always download it later from <b>Apps</b> in the sidebar.</p>
+        <span class="m-link">Learn about the desktop app</span>
+      </div>
+      <div class="m-foot">
+        <div class="step"><div class="st">Step 2 of 3</div><div class="bar"><i style="width:66%"></i></div></div>
+        <button class="continue">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Option B — feature intro + download ===== -->
+  <div class="opt-label"><span class="n">Option B</span><h2>Feature intro</h2><span>· explains what it does + download buttons</span></div>
+  <div class="stage">
+    <div class="modal">
+      <div class="m-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="m-body">
+        <h2 class="m-title">Meet the Scanmarker desktop app</h2>
+        <p class="m-sub">Scan printed text directly into Word, Excel, PowerPoint — or any app — on your computer.</p>
+        <div class="feats">
+          <div class="feat"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></svg></span><div class="fh">Scan into any app</div><div class="ft">Text lands right at your cursor.</div></div>
+          <div class="feat"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></span><div class="fh">Windows & macOS</div><div class="ft">Free desktop download.</div></div>
+          <div class="feat"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l6-6M14 4l6 6-9 9-6-6z"/></svg></span><div class="fh">Pairs with your pen</div><div class="ft">Connect over USB or Bluetooth.</div></div>
+        </div>
+        <div class="dlrow">
+          <button class="dlbtn"><svg viewBox="0 0 24 24" fill="#00A4EF"><path d="M3 5.5 11 4.3V11H3zM12 4.15 21 3v8h-9zM3 12h8v6.7L3 17.5zM12 12h9v9l-9-1.15z"/></svg> Download for Windows</button>
+          <button class="dlbtn"><svg viewBox="0 0 24 24" fill="#111"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.5 2 1 0 1.3-.6 2.5-.6s1.5.6 2.6.6 1.7-1 2.4-2c.5-.7.7-1.2 1-2-.02-.02-2.4-.9-2.4-3.6zM14.6 6.3c.6-.7 1-1.6.9-2.6-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.5 1 .1 1.9-.5 2.5-1.2z"/></svg> Download for macOS</button>
+        </div>
+        <p class="helper">Translation, dictionary & read‑aloud are in the <b>Web App</b>.</p>
+      </div>
+      <div class="m-foot">
+        <div class="step"><div class="st">Step 2 of 3</div><div class="bar"><i style="width:66%"></i></div></div>
+        <button class="continue">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Option C — how it works (3 steps) ===== -->
+  <div class="opt-label"><span class="n">Option C</span><h2>How it works</h2><span>· quick setup steps from the support guide</span></div>
+  <div class="stage">
+    <div class="modal">
+      <div class="m-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="m-body">
+        <h2 class="m-title">How the desktop app works</h2>
+        <p class="m-sub">Three quick steps to scan into any app on your computer.</p>
+        <div class="osteps">
+          <div class="ostep"><span class="onum">1</span><div><div class="oh">Download ScanToExternal</div><div class="ot">Pick <strong>Windows</strong> or <strong>macOS</strong> and run the installer from your Downloads folder.</div></div></div>
+          <div class="ostep"><span class="onum">2</span><div><div class="oh">Open it and connect</div><div class="ot">Launch the app, power on your pen, and click <strong>Connect</strong> — the icon turns orange.</div></div></div>
+          <div class="ostep"><span class="onum">3</span><div><div class="oh">Start scanning</div><div class="ot">Open any app and scan — the text appears right at your cursor.</div></div></div>
+        </div>
+        <div class="dlrow">
+          <button class="dlbtn"><svg viewBox="0 0 24 24" fill="#00A4EF"><path d="M3 5.5 11 4.3V11H3zM12 4.15 21 3v8h-9zM3 12h8v6.7L3 17.5zM12 12h9v9l-9-1.15z"/></svg> Windows</button>
+          <button class="dlbtn"><svg viewBox="0 0 24 24" fill="#111"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.5 2 1 0 1.3-.6 2.5-.6s1.5.6 2.6.6 1.7-1 2.4-2c.5-.7.7-1.2 1-2-.02-.02-2.4-.9-2.4-3.6zM14.6 6.3c.6-.7 1-1.6.9-2.6-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.5 1 .1 1.9-.5 2.5-1.2z"/></svg> macOS</button>
+        </div>
+      </div>
+      <div class="m-foot">
+        <div class="step"><div class="st">Step 2 of 3</div><div class="bar"><i style="width:66%"></i></div></div>
+        <button class="continue">Continue</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<script>
-  var IMG='../web-scanmarker-client/src/assets/images/apps/';
-  var XL='<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#217346"/><path d="M14 13l5 7-5 7h3.4l3.3-4.9L24 27h3.4l-5-7 5-7H24l-3.3 4.9L17.4 13z" fill="#fff"/></svg>';
-  var PP='<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#C43E1C"/><path d="M14 12h8a6 6 0 0 1 0 12h-4.5v5H14zm3.5 3v6H22a3 3 0 0 0 0-6z" fill="#fff"/></svg>';
-  var LOGO={Word:{img:'ms-word-logo.svg'},Excel:{svg:XL},PowerPoint:{svg:PP},Outlook:{img:'ms-outlook.png'},Gmail:{img:'gmail.png'},Teams:{img:'business.png'},Slack:{img:'slack.png'},Notion:{img:'Notion_app_logo.png'},X:{img:'twitter.png'},LinkedIn:{img:'linkedin (1).png'},Salesforce:{img:'salesforce.png'},Discord:{img:'discord.png'}};
-  var NAMES=["Word","Excel","PowerPoint","Outlook","Gmail","Teams","Slack","Notion","X","LinkedIn","Salesforce","Discord"];
-  function glyph(n){var L=LOGO[n];return L.svg?L.svg:'<img src="'+IMG+encodeURI(L.img)+'" alt="'+n+'">';}
-  function works(cls){return '<div class="wt '+(cls||'')+'">'+NAMES.map(function(n){return '<span class="lg" data-tip="'+n+'">'+glyph(n)+'</span>';}).join('')+'</div><p class="anyapp">+ any app that accepts keyboard input</p>';}
-
-  var GLOBE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>';
-  var GRID='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>';
-  var DL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>';
-  var FILE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>';
-  var PLUG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.6 0l3-3a4 4 0 1 0-5.6-5.6l-1 1"/><path d="M14 10a4 4 0 0 0-5.6 0l-3 3a4 4 0 1 0 5.6 5.6l1-1"/></svg>';
-  var SCN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></svg>';
-  var CHIPS='<div class="conn"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10M9 6l3-3 3 3M9 13h6l-1.5 7h-3z"/></svg> USB</span><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7 8 10 8-5 4V4l5 4L7 16"/></svg> Bluetooth</span></div>';
-  var STEPS=[
-    [GLOBE,"Open the Web App",'Sign in at <b>app.scanmarker.com</b>.',''],
-    [GRID,"Open “Apps for downloads”",'Click it in the <b>left menu</b>.',''],
-    [DL,"Choose your system & Install",'Pick <b>Windows</b> or <b>Mac</b>, then click <b>Install</b>.',''],
-    [FILE,"Run the installer",'Open the file from <b>Downloads</b>. If asked, click <b>Yes</b> for Visual C++.',''],
-    [PLUG,"Open ScanToExternal & connect",'Turn on your pen, click <b>Connect</b>. Icon turns <b>orange</b>.',CHIPS],
-    [SCN,"Scan into any app",'Put your cursor anywhere and scan — it types instantly.','']
-  ];
-  function ib(i){return '<span class="sib"><span class="nx">'+(i+1)+'</span>'+STEPS[i][0]+'</span>';}
-  function step(i,wrapClass){return '<div class="s">'+ib(i)+'<div><div class="sh">'+STEPS[i][1]+'</div><div class="st">'+STEPS[i][2]+'</div>'+STEPS[i][3]+'</div></div>';}
-  function allSteps(container){return '<div class="'+container+'">'+STEPS.map(function(_,i){return step(i);}).join('')+'</div>';}
-
-  var TITLE='How to get the <span class="o">desktop app</span>';
-  var SUB='ScanToExternal lets you scan into Word, Excel and any app on your computer — right where your cursor is.';
-  var NOTE='<div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>The first time, you\'ll <b>sign in again</b> in the desktop app. Need <b>translation</b> or read‑aloud? Use the <b>Web App</b> (Chrome &amp; Edge).</span></div>';
-  function foot(){return '<div class="m-foot"><div class="step"><div class="st2">Step 2 of 3</div><div class="bar"><i></i></div></div><button class="cont">Continue</button></div>';}
-  function lab(n,h,rec){return '<div class="opt-label"><span class="n">Design '+n+'</span><h2>'+h+'</h2>'+(rec?'<span class="rec">Recommended</span>':'')+'</div>';}
-  function modal(inner){return '<div class="backdrop"><div class="modal"><div class="m-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div><div class="m-body"><h1 class="title">'+TITLE+'</h1><p class="sub">'+SUB+'</p>'+inner+'</div>'+foot()+'</div></div>';}
-
-  function blockSteps(){return STEPS.map(function(s,i){return '<div class="s">'+ib(i)+'<div class="sh">'+STEPS[i][1]+'</div><div class="st">'+STEPS[i][2]+'</div>'+STEPS[i][3]+'</div>';}).join('');}
-  var HOW='<div class="dlabel">How to download &amp; set up</div>';
-  var WORKS='<div class="wlabel" style="margin-top:24px">Works with</div><div class="wrow">'+NAMES.map(function(n){return '<span class="lg" data-tip="'+n+'">'+glyph(n)+'</span>';}).join('')+'</div><p class="anyapp">+ any app that accepts keyboard input</p>';
-  var out='';
-  out+=lab(1,'Two-column grid',true)+modal(HOW+allSteps('g2')+NOTE+WORKS);
-  out+=lab(2,'Vertical timeline')+modal(HOW+allSteps('tl')+NOTE+WORKS);
-  out+=lab(3,'Step cards')+modal(HOW+'<div class="cards">'+blockSteps()+'</div>'+NOTE+WORKS);
-  out+=lab(4,'Accent rail')+modal(HOW+'<div class="rail">'+blockSteps()+'</div>'+NOTE+WORKS);
-  out+=lab(5,'Icon-top grid')+modal(HOW+'<div class="g3">'+blockSteps()+'</div>'+NOTE+WORKS);
-  document.getElementById('root').innerHTML=out;
-</script>
 </body>
 </html>
