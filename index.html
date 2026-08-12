@@ -3,105 +3,128 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Onboarding — platforms (modal) · 10 designs</title>
+<title>Onboarding — Scanmarker platforms (coloured)</title>
 <style>
   @font-face{font-family:"SFCompactDisplay";src:url("../web-scanmarker-client/src/assets/fonts/sf-compact-display-medium-5864711817c30.otf");font-weight:400 800;font-display:swap;}
   :root{
-    --ink:#16181B; --title:#111318; --text:#3C4149; --muted:#6E747C; --muted-2:#A6ABB3;
-    --line:#E2E4E8; --hair:#EFF0F3; --hair-2:#F7F8FA;
-    --orange:#F26522; --orange-2:#FF8A3D; --orange-deep:#E24E12; --orange-soft:#FFF1E7; --peach-2:#FBDDCB;
+    --ink:#16181B; --title:#111318; --text:#3C4149; --muted:#767C84; --muted-2:#AAB0B8;
+    --line:#ECEEF1; --hair:#F0F1F4; --hair-2:#F7F8FA;
+    --orange:#F26522; --orange-2:#FF8A3D; --orange-deep:#E24E12; --orange-soft:#FFF1E7;
     --sans:"SFCompactDisplay","Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+    --pcl:#2563EB; --pcd:#1D4FD7; --pcs:#EAF1FE; --pcg:#DCE8FD;
   }
   *{box-sizing:border-box}
   body{margin:0;background:#EEF0F2;color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
-  .wrap{max-width:1120px;margin:0 auto;padding:34px 20px 100px}
+  .wrap{max-width:1120px;margin:0 auto;padding:34px 20px 70px}
   .page-head h1{font-size:clamp(19px,2.3vw,24px);letter-spacing:-.01em;margin:0;color:var(--ink);font-weight:700}
-  .page-head p{margin:8px 0 0;color:var(--muted);max-width:82ch}
-  .opt-label{display:flex;align-items:baseline;gap:11px;margin:40px 0 12px;flex-wrap:wrap}
-  .opt-label .n{font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-deep);border:1px solid var(--orange-soft);background:var(--orange-soft);border-radius:999px;padding:5px 10px}
-  .opt-label h2{font-size:15px;margin:0;color:var(--ink)} .opt-label span{color:var(--muted);font-size:13px}
-  .opt-label .rec{margin-left:6px;font-size:11px;font-weight:700;color:#0f7a4d;background:#e5f6ee;border:1px solid #bfe8d3;border-radius:999px;padding:4px 9px}
+  .page-head p{margin:8px 0 22px;color:var(--muted);max-width:82ch}
 
-  /* modal base — matches the picture */
-  .backdrop{background:linear-gradient(180deg,#B4B8BE,#A3A7AD);border-radius:16px;padding:26px}
-  .modal{max-width:1000px;margin:0 auto;background:#fff;border-radius:26px;box-shadow:0 40px 90px -34px rgba(16,18,26,.55);position:relative;min-height:560px;display:flex;flex-direction:column;padding:26px 44px 0}
-  .m-back{position:absolute;left:24px;top:22px;width:34px;height:34px;display:grid;place-items:center;color:#111;cursor:pointer;border-radius:8px}.m-back:hover{background:var(--hair-2)}.m-back svg{width:24px;height:24px}
-  .m-body{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:18px}
-  .title{font-size:clamp(22px,2.7vw,29px);font-weight:700;letter-spacing:-.02em;color:var(--title);margin:6px 0 11px;max-width:22ch;line-height:1.18}.title .o{color:var(--orange)}
-  .sub{font-size:clamp(14.5px,1.6vw,17px);color:#3A3D42;margin:0 auto 26px;max-width:64ch;line-height:1.45}
-  .m-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:24px 0 28px;border-top:1px solid var(--hair)}
-  .m-foot .st{font-size:13.5px;font-weight:700;color:#111}.m-foot .bar{width:150px;height:7px;background:#E6E6E6;border-radius:99px;overflow:hidden;margin-top:8px}.m-foot .bar i{display:block;height:100%;width:66%;background:var(--orange);border-radius:99px}
-  .cont{background:linear-gradient(135deg,var(--orange-2),var(--orange-deep));color:#fff;border:0;border-radius:12px;padding:13px 38px;font-weight:700;font-size:15.5px;cursor:pointer;font-family:inherit;box-shadow:0 12px 24px -12px rgba(226,78,18,.65)}.cont:hover{filter:brightness(1.05)}
-  @media(max-width:640px){.backdrop{padding:12px}.modal{padding:22px 18px 0;border-radius:20px}.m-back{left:12px;top:12px}.m-body{padding-top:24px}.m-foot{flex-direction:column;align-items:stretch;gap:14px;padding:18px 0 22px}.m-foot .step{order:2}.cont{order:1;width:100%}.m-foot .bar{width:100%}}
+  .backdrop{background:linear-gradient(180deg,#B4B8BE,#A3A7AD);border-radius:16px;padding:30px}
+  .modal{max-width:1000px;margin:0 auto;background:#fff;border-radius:26px;box-shadow:0 40px 90px -34px rgba(16,18,26,.55);position:relative;min-height:620px;display:flex;flex-direction:column;overflow:hidden}
+  .m-back{position:absolute;left:22px;top:20px;width:36px;height:36px;display:grid;place-items:center;color:#111;cursor:pointer;border-radius:9px;transition:opacity .15s,background .15s;z-index:3}.m-back:hover{background:rgba(255,255,255,.6)}.m-back svg{width:24px;height:24px}.m-back.off{opacity:0;pointer-events:none}
 
-  /* grids */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:760px;margin:0 auto}
-  @media(max-width:680px){.grid{grid-template-columns:1fr}}
-  .grid.r4{grid-template-columns:repeat(4,1fr);max-width:860px}@media(max-width:860px){.grid.r4{grid-template-columns:repeat(2,1fr)}}@media(max-width:460px){.grid.r4{grid-template-columns:1fr}}
-  .grid.one{grid-template-columns:1fr;max-width:640px}
+  .screen{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:44px 46px 30px;background:linear-gradient(180deg,var(--pcg) 0%,var(--pcs) 34%,#FFFFFF 82%)}
+  .screen::before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:var(--pcl);opacity:.10;top:-140px;right:-110px}
+  .screen::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:var(--pcl);opacity:.06;bottom:-110px;left:-90px}
+  #stage{position:relative;z-index:1;width:100%;display:flex;justify-content:center;animation:fade .34s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-  .card{border:1px solid var(--line);border-radius:16px;background:#fff;padding:20px;display:flex;gap:15px;align-items:flex-start;text-align:left;transition:box-shadow .15s ease,transform .1s ease;--pcl:#2563EB}
-  .card:hover{box-shadow:0 14px 30px -20px var(--pcl);transform:translateY(-1px)}
-  .ci{width:48px;height:48px;flex:0 0 auto;border-radius:13px;background:var(--orange-soft);color:var(--orange-deep);display:grid;place-items:center}.ci svg{width:25px;height:25px}
-  .ci.color{background:var(--pcs);color:var(--pcl)} .ci.grad{background:linear-gradient(135deg,var(--pcl),var(--pcd));color:#fff}
-  .cn{font-weight:700;font-size:16px;color:var(--ink);margin:1px 0 5px}
-  .cd{font-size:13px;color:var(--muted);line-height:1.55}
-  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
-  .tg{font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);background:var(--hair-2);border:1px solid var(--hair);border-radius:999px;padding:2px 9px}
-  .tg.dark{color:#fff;background:var(--ink);border-color:var(--ink)}.tg.col{color:#fff;background:var(--pcl);border-color:var(--pcl)}
-  .card.tint{background:var(--pcs);border-color:transparent}
-  .card.topbar{border-top:4px solid var(--pcl)}
-  .card.bl{border:0;box-shadow:none;background:transparent}.card.bl:hover{transform:translateY(-2px);box-shadow:none}
-  .grid.center .card{flex-direction:column;align-items:center;text-align:center}.grid.center .tags{justify-content:center}
-  .r4 .card{flex-direction:column;align-items:center;text-align:center;padding:18px 14px}.r4 .cn{font-size:15px}.r4 .tags{justify-content:center}
-  .grp{width:100%;max-width:760px;text-align:left}.grp .gh{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin:2px 0 10px}.grp .gh+.grid{margin-bottom:18px}
+  .slide{max-width:470px;display:flex;flex-direction:column;align-items:center}
+  .badge{width:104px;height:104px;border-radius:24px;margin-bottom:18px;overflow:hidden;box-shadow:0 22px 44px -18px var(--pcl),0 4px 10px -6px rgba(16,18,26,.18)}
+  .badge-img{width:100%;height:100%;object-fit:cover;display:block}
+  .chips{display:flex;gap:7px;justify-content:center;margin-bottom:11px}
+  .chip{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--pcl);background:#fff;border:1px solid var(--pcg);border-radius:999px;padding:4px 11px}
+  .pname{font-size:clamp(25px,3vw,30px);font-weight:700;letter-spacing:-.022em;color:var(--title);margin:0 0 9px}
+  .lead{font-size:15px;color:#41454B;line-height:1.5;margin:0 0 20px;max-width:44ch}
+  .featcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:0 26px 50px -34px rgba(16,18,26,.45);width:100%;max-width:428px;display:flex;flex-direction:column;gap:12px}
+  .feat{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--text);text-align:left;line-height:1.42}
+  .feat .ck{width:25px;height:25px;flex:0 0 auto;border-radius:8px;background:var(--pcs);color:var(--pcl);display:grid;place-items:center;margin-top:1px}.feat .ck svg{width:13px;height:13px}
+  .feat b{color:var(--ink);font-weight:700}
+
+  .m-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:20px 46px 30px;background:#fff;border-top:1px solid var(--hair);position:relative;z-index:2}
+  .m-foot .st{font-size:13.5px;font-weight:700;color:#111}.m-foot .bar{width:170px;height:7px;background:#E9EAEC;border-radius:99px;overflow:hidden;margin-top:8px}.m-foot .bar i{display:block;height:100%;background:var(--orange);border-radius:99px;transition:width .3s ease}
+  .cont{background:linear-gradient(135deg,var(--orange-2),var(--orange-deep));color:#fff;border:0;border-radius:12px;padding:14px 40px;font-weight:700;font-size:15.5px;cursor:pointer;font-family:inherit;box-shadow:0 12px 24px -12px rgba(226,78,18,.65)}.cont:hover{filter:brightness(1.05)}
+  @media(max-width:640px){.backdrop{padding:12px}.modal{min-height:580px;border-radius:20px}.screen{padding:52px 20px 26px}.m-foot{padding:16px 20px 20px;flex-direction:column;align-items:stretch;gap:14px}.step{order:2}.cont{order:1;width:100%}.m-foot .bar{width:100%}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="page-head">
-    <h1>Onboarding · platforms in the modal — 10 designs</h1>
-    <p>All 10 now use your modal frame (back chevron, Step 2 of 3 + progress bar, orange Continue). Informational only — no links, no "read more". iOS &amp; Android merged.</p>
+    <h1>Onboarding · Scanmarker platforms — coloured card</h1>
+    <p>Each screen has its own colour &amp; soft shapes, with the features on a floating card. Press <b>Continue</b> to move through Web → Desktop → Mobile → Keyboard.</p>
   </div>
-  <div id="root"></div>
+
+  <div class="backdrop">
+    <div class="modal">
+      <div class="m-back off" id="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="screen"><div id="stage"></div></div>
+      <div class="m-foot">
+        <div class="step"><div class="st" id="st">Step 1 of 4</div><div class="bar"><i id="fill" style="width:25%"></i></div></div>
+        <button class="cont" id="cont">Continue</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-  var GLOBE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"/></svg>';
-  var MON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>';
-  var PHONE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>';
-  var KEY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>';
+  var GLOBE='<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="15"/><path d="M9 24h30"/><path d="M24 9c5 4.6 5 25.4 0 30M24 9c-5 4.6-5 25.4 0 30"/></svg>';
+  var MON='<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="34" height="24" rx="3.5"/><path d="M18 40h12M24 34v6"/><path d="M13 18h18M13 24h11" stroke-opacity=".65"/></svg>';
+  var PHONE='<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="6" width="18" height="36" rx="4.5"/><path d="M21 11h6" stroke-opacity=".7"/><path d="M22 37h4"/></svg>';
+  var KEY='<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="13" width="36" height="22" rx="4.5"/><path d="M13 21h.01M20 21h.01M27 21h.01M34 21h.01M16 29h16"/></svg>';
+
   var PLATS=[
-    {n:'Web App',tags:['Chrome','Edge'],ic:GLOBE,cl:'#2563EB',cd:'#1D4FD7',cs:'#EAF1FE',d:'Scan and listen right in your browser — nothing to install. Works in Chrome and Edge.',s:'In your browser.'},
-    {n:'Desktop App',tags:['Windows','macOS'],ic:MON,cl:'#7C3AED',cd:'#6A28DE',cs:'#F1EAFE',d:'A full‑featured desktop app for Windows and macOS — scan into Word, Excel, email and any app.',s:'For Windows & macOS.'},
-    {n:'Mobile App',tags:['iOS','Android'],ic:PHONE,cl:'#0D9488',cd:'#0B7F75',cs:'#E3F5F3',d:'Scan on the go and sync with your phone or tablet via Bluetooth — on iOS and Android.',s:'On iOS & Android.'},
-    {n:'Keyboard App',tags:['iOS','Android'],ic:KEY,cl:'#EA580C',cd:'#D24E0A',cs:'#FEEDE1',d:'Type with your scanner into any app using the keyboard extension — works system‑wide.',s:'Type anywhere on mobile.'}
+    {n:'Web App',tags:['Chrome','Edge'],ic:GLOBE,img:'images/logo_webandApp.png',cl:'#2563EB',cd:'#1D4FD7',cs:'#EAF1FE',cg:'#D6E4FD',
+      lead:'Open Chrome or Edge, connect your Scanmarker and start scanning right away — nothing to download or install. The fastest way to read, study and look things up.',
+      f:['<b>Real‑time read‑aloud</b> speaks every scan back to you — ideal reading support for dyslexia and language learners.',
+         '<b>Instant translation</b> across 140+ languages, with 5 available fully offline.',
+         '<b>Built‑in dictionary</b> plus a Favourites list to look up and revise new words.',
+         '<b>Free with your device</b> — one sign‑in, no activation codes.']},
+    {n:'Desktop App',tags:['Windows','macOS'],ic:MON,img:'images/scantoexternal.svg',cl:'#7C3AED',cd:'#6A28DE',cs:'#F1EAFE',cg:'#E6DBFB',
+      lead:'The complete app for Windows and macOS. Scan to External turns your scanner into a keyboard for your computer, dropping text exactly where your cursor sits.',
+      f:['<b>Scan straight into</b> Word, Excel, PowerPoint, Gmail, Google Docs &amp; email.',
+         '<b>No manual typing</b> — capture notes, quotes and figures in seconds.',
+         '<b>Read aloud &amp; translate</b> 140+ languages as you scan.',
+         '<b>Built for volume</b> — keep long research and documents organised.']},
+    {n:'Mobile App',tags:['iOS','Android'],ic:PHONE,img:'images/logo_webandApp.png',cl:'#0D9488',cd:'#0B7F75',cs:'#E3F5F3',cg:'#CFEDE9',
+      lead:'Take Scanmarker anywhere. Pair over Bluetooth and scan from your phone or tablet — perfect for the library, the classroom or on the move.',
+      f:['<b>Wireless Bluetooth</b> connection — no cables to carry around.',
+         '<b>Cloud sync</b> saves every scan and follows you across your devices.',
+         '<b>Read aloud &amp; translate</b> 140+ languages right on your phone.',
+         '<b>Save to Favourites</b> and build your vocabulary on the go.']},
+    {n:'Keyboard App',tags:['iOS','Android'],ic:KEY,img:'images/keyboard.png',cl:'#EA580C',cd:'#D24E0A',cs:'#FEEDE1',cg:'#FBDBC6',
+      lead:'Adds a Scanmarker keyboard to your phone, so scanned text appears wherever you can type. Switch to it in any app and scan straight into the text field.',
+      f:['<b>Works system‑wide</b> — Notes, WhatsApp, email, search and forms.',
+         '<b>No copy‑paste</b> — scanned words land right at your cursor.',
+         '<b>Scan in 140+ languages</b> with translation as you go.',
+         '<b>Available on both</b> iOS and Android.']}
   ];
-  function pvars(p){return '--pcl:'+p.cl+';--pcd:'+p.cd+';--pcs:'+p.cs;}
-  function tagsEl(p,cls){return '<div class="tags">'+p.tags.map(function(t){return '<span class="tg '+(cls||'')+'">'+t+'</span>';}).join('')+'</div>';}
-  function card(p,o){o=o||{};var ic='ci'+(o.icon==='color'?' color':o.icon==='grad'?' grad':'');
-    return '<div class="card '+(o.card||'')+'" style="'+pvars(p)+'"><span class="'+ic+'">'+p.ic+'</span><div><div class="cn">'+p.n+'</div><div class="cd">'+(o.short?p.s:p.d)+'</div>'+tagsEl(p,o.tag)+'</div></div>';}
-  function grid(o,cls){return '<div class="grid '+(cls||'')+'">'+PLATS.map(function(p){return card(p,o);}).join('')+'</div>';}
-  function grp(){return '<div class="grp"><div class="gh">On your computer</div><div class="grid">'+card(PLATS[0],{icon:'color'})+card(PLATS[1],{icon:'color'})+'</div><div class="gh">On your phone</div><div class="grid">'+card(PLATS[2],{icon:'color'})+card(PLATS[3],{icon:'color'})+'</div></div>';}
+  var CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
 
-  var CHEV='<div class="m-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>';
-  var HDR='<h1 class="title">One Scanmarker, <span class="o">four ways to use it</span></h1><p class="sub">Air, Reader &amp; USB share one software ecosystem — this is just to show your options; use whichever fits how you work.</p>';
-  var FOOT='<div class="m-foot"><div class="step"><div class="st">Step 2 of 3</div><div class="bar"><i></i></div></div><button class="cont">Continue</button></div>';
-  function modal(inner){return '<div class="backdrop"><div class="modal">'+CHEV+'<div class="m-body">'+HDR+inner+'</div>'+FOOT+'</div></div>';}
-  function lab(n,h,rec){return '<div class="opt-label"><span class="n">Design '+n+'</span><h2>'+h+'</h2>'+(rec?'<span class="rec">Recommended</span>':'')+'</div>';}
+  function slide(p){
+    var chips=p.tags.map(function(t){return '<span class="chip">'+t+'</span>';}).join('');
+    var feats=p.f.map(function(x){return '<div class="feat"><span class="ck">'+CK+'</span><span>'+x+'</span></div>';}).join('');
+    return '<div class="slide"><div class="badge"><img class="badge-img" src="'+p.img+'" alt="'+p.n+'"></div><div class="chips">'+chips+'</div>'
+      +'<h1 class="pname">'+p.n+'</h1><p class="lead">'+p.lead+'</p>'
+      +'<div class="featcard">'+feats+'</div></div>';
+  }
 
-  var out='';
-  out+=lab(1,'Colour icon cards (2×2)',true)+modal(grid({icon:'color'}));
-  out+=lab(2,'Gradient icon cards')+modal(grid({icon:'grad'}));
-  out+=lab(3,'Tinted cards')+modal(grid({icon:'color',card:'tint',tag:'col'}));
-  out+=lab(4,'Colour top‑bar cards')+modal(grid({icon:'color',card:'topbar'}));
-  out+=lab(5,'Row of four')+modal(grid({icon:'color',short:true},'r4'));
-  out+=lab(6,'Icon on top (centered)')+modal(grid({icon:'color'},'center'));
-  out+=lab(7,'Borderless (gradient icons)')+modal(grid({icon:'grad',card:'bl'},'center'));
-  out+=lab(8,'List rows')+modal(grid({icon:'color'},'one'));
-  out+=lab(9,'Dark tags (orange icons)')+modal(grid({icon:'orange',tag:'dark'}));
-  out+=lab(10,'Grouped (computer / phone)')+modal(grp());
-  document.getElementById('root').innerHTML=out;
+  var i=0, N=PLATS.length;
+  var root=document.documentElement, stage=document.getElementById('stage'),
+      st=document.getElementById('st'), fill=document.getElementById('fill'),
+      back=document.getElementById('back'), cont=document.getElementById('cont');
+  function paint(){
+    var p=PLATS[i];
+    root.style.setProperty('--pcl',p.cl);root.style.setProperty('--pcd',p.cd);root.style.setProperty('--pcs',p.cs);root.style.setProperty('--pcg',p.cg);
+    stage.innerHTML=slide(p);
+    stage.style.animation='none'; void stage.offsetWidth; stage.style.animation='';
+    st.textContent='Step '+(i+1)+' of '+N;
+    fill.style.width=((i+1)/N*100)+'%';
+    back.className='m-back'+(i===0?' off':'');
+    cont.textContent=(i===N-1)?'Get started':'Continue';
+  }
+  cont.onclick=function(){ if(i<N-1){i++;paint();} };
+  back.onclick=function(){ if(i>0){i--;paint();} };
+  paint();
 </script>
 </body>
 </html>

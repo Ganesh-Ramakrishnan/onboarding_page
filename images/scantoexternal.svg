@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" shape-rendering="geometricPrecision">
+  <rect width="256" height="256" rx="56" ry="56" fill="#FFFFFF"/>
+  <!-- Orange C: four connected parallelograms (italic / left-leaning) -->
+  <g fill="#F05028">
+    <!-- top horizontal bar -->
+    <polygon points="72,71 204,71 201,87 68,87"/>
+    <!-- short top-right descender -->
+    <polygon points="187,87 201,87 197,109 183,109"/>
+    <!-- left full-height stroke -->
+    <polygon points="68,87 83,87 66,172 51,172"/>
+    <!-- bottom horizontal bar -->
+    <polygon points="51,172 141,172 137,188 47,188"/>
+  </g>
+  <!-- Three black text lines inside the C opening -->
+  <g fill="#000000">
+    <rect x="157" y="120" width="54" height="5" rx="2.5"/>
+    <rect x="157" y="139" width="54" height="5" rx="2.5"/>
+    <rect x="129" y="157" width="82" height="5" rx="2.5"/>
+  </g>
+</svg>
